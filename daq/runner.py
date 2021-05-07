@@ -239,7 +239,7 @@ class DAQRunner:
             LOGGER.info('New session started for %s %s/%s at %s', request.device_mac,
                         request.device_vlan, request.assigned_vlan, remote_ip)
             assert remote_ip, 'remote request ip not specified'
-            self.network.configure_remote_tap(remote)
+            self.network.configure_remote_tap(request)
             device = self._devices.create_if_absent(request.device_mac)
             device.dhcp_mode = DhcpMode.EXTERNAL
             self._remote_trigger(device, request.device_vlan, request.assigned_vlan)
